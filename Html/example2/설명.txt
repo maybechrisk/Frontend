@@ -1,0 +1,62 @@
+* 코딩 
+네이버 눌리
+다음 회원가입 폼 
+네이버 뉴스 
+유투브 
+인스타 
+
+* 병원 
+티스토리 
+구글 
+
+
+
+헤더 
+ - 로고 먼저
+ - 메뉴 
+ - 검색 
+순서대로  
+
+- 이미지의 alt를 비우지 말 것
+
+* 검색 
+- 일반적으로 form으로 쓴다 
+- post를 안 쓰고 get을 써도 된다 
+- 검색은 항목이 적어도 fieldset을 쓴다. (하나면 안 써도 됨) 
+- 눈에 보이는 것만 만들지 않고 어차피 css로 숨길 수 있으니 배운 요소들을 다 넣어주는 것이 좋다 
+- <input type="search">는 html5
+안되면 text를 쓴다 
+- id값과 for 값을 맞춘다 
+
+
+* 헤더 메뉴 만들기 
+http://validator.w3.org/에서 마크업이 맞는지 확인할것
+
+h1은 제일 높은 수준이므로 
+본문 제목은 h2를 많이 쓴다 (h3로 써도 된다. 단계가 3단계 이니까)
+
+
+
+
+* 테이블 만들기
+- 테이블은 caption이 꼭 있어야 함. 
+- html에서는 summary가 에러가 나기 때문에 caption이 있으면 안 쓰는 게 좋다
+<table summary="">
+
+- strong 안에 a태그가 있거나 a태그 안에 strong 태그가 있거나 하는 것은 관계 없다 
+
+
+- blockquote 인용문에 쓴다 
+cite : 출처
+<footer>팀 버너스 리 경 - <cite>웹의 창시자 (Tim Berners - Lee , W3C Director and inventor of the World Wide Web)</cite></footer>
+
+html5이기 떄문에 small로 바꾼다 
+
+
+
+image에 마우스르 올렸을 때 나타나는 것 <= title
+
+
+주로 보통 
+
+
