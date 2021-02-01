@@ -2,6 +2,6 @@
 // ES
 module.exports = {
   devServer: {
-    overlay: false
-  }
-}
+    overlay: false,
+  },
+};
