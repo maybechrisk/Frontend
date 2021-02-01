@@ -1,0 +1,24 @@
+.DS_Store
+
+#temporarily edit only vue.js
+Angular
+Css
+Html
+Jquery
+Publishing
+Reactjs
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

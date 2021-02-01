@@ -1,0 +1,27 @@
+1. 호환성 - ES5를 사용하므로, iE8이하는 지원하지 않음.
+2. vue devtools 브라우저에 설치 - chrome, firefox
+3. vue 추가방법 1) CDN, 2) npm 설치
+ 1) CDN
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+  <script type="module">
+   import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js'
+  </script>
+ 2) npm
+  npm install vue
+4. Vue 빌드
+ 1) NPM 패키지의 dist/ 디렉토리에 다양한 Vue.js 빌드가 있음 (UMD, Common.js, ES module for bundlers, Es module for browsers
+ 2) 용어
+  (1) Full : 컴파일, 런타임 버전 모두 포함
+  (2) 컴파일 : 템플릿 문자열을 자바스크립트 렌더링 함수로 컴파일
+  - 컴파일 필요
+  new Vue({
+   template: '<div>{{ hi }}</div>'
+  })
+  - 컴파일 필요 없음
+  new Vue({
+    render (h) {
+      return h('div', this.hi)
+    }
+  })
+  (3) 런타임 : 뷰 인스턴스 생성, 가상 돔 렌더링, 업데이트 담당. (모든 컴파일을 제외)
