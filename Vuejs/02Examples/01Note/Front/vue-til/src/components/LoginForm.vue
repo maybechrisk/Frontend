@@ -30,14 +30,23 @@ export default {
     // 동기화 처리
     async submitForm() {
       console.log('로그인');
-      const userData = {
-        username: this.username,
-        password: this.password,
-      };
-      const { data } = await loginUser(userData); // data를 바로 꺼냄.
-      console.log(data);
-      this.logMessage = `${data.user.username} 님이 로그인 하였습니다.`; // ``을 이용해서 자바스크립트 변수를 넣을 수 있음.
-      this.initForm();
+      try {
+        // 비즈니스 로직
+        const userData = {
+          username: this.username,
+          password: this.password,
+        };
+        const { data } = await loginUser(userData); // data를 바로 꺼냄.
+        console.log(data);
+        this.logMessage = `${data.user.username} 님 환영합니다.`; // ``을 이용해서 자바스크립트 변수를 넣을 수 있음.
+
+      } catch (e) {
+        // error 핸들링 코드
+        console.log(e.response.data);
+        this.logMessage = e.response.data;
+      } finally {
+        this.initForm();
+      }
     },
     initForm() {
       // 초기화 시 null로 해도 되지만, 타입을 정해주는 게 에러를 줄이는 방법임.
