@@ -40,13 +40,14 @@ export default {
         password: this.password,
         nickname: this.nickname,
       };
-//      const response = await registerUser(userData);
-        const { data } = await registerUser(userData); // data를 바로 꺼냄.
-        console.log(data.username);
-        this.logMessage = `${data.username} 님이 회원가입 되었습니다.` // ``을 이용해서 자바스크립트 변수를 넣을 수 있음.
+      //      const response = await registerUser(userData);
+      const { data } = await registerUser(userData); // data를 바로 꺼냄.
+      console.log(data.username);
+      this.logMessage = `${data.username} 님이 회원가입 되었습니다.`; // ``을 이용해서 자바스크립트 변수를 넣을 수 있음.
       this.initForm();
     },
-    initForm(){ // 초기화 시 null로 해도 되지만, 타입을 정해주는 게 에러를 줄이는 방법임.
+    initForm() {
+      // 초기화 시 null로 해도 되지만, 타입을 정해주는 게 에러를 줄이는 방법임.
       this.username = '';
       this.password = '';
       this.nickname = '';
