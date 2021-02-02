@@ -2,20 +2,24 @@
   <!-- prevent : 폼의 기본동작인 제출과 새로고침을 막을 수 있다.  -->
   <form class="" @submit.prevent="submitForm">
     <div class="">
-      <label for="username">id: </label>
+      <label for="username">email: </label>
       <input type="text" id="username" v-model="username" />
     </div>
     <div class="">
       <label for="password">pw: </label>
       <input type="password" id="password" v-model="password" />
     </div>
-    <button type="submit">로그인</button>
+    <!-- v-bind:를 줄이면 :로 쓴다 -->
+    <button :disabled="!isUsernameValid || !password" type="submit">
+      로그인
+    </button>
     {{ logMessage }}
   </form>
 </template>
 
 <script>
 import { loginUser } from '@/api/index';
+import { validateEmail } from '@/utils/validation';
 export default {
   data() {
     return {
@@ -25,6 +29,12 @@ export default {
       // log Message
       logMessage: '',
     };
+  },
+  // 데이터 변화에 따라 이를 자동으로 연산해주는 연산식
+  computed: {
+    isUsernameValid() {
+      return validateEmail(this.username);
+    },
   },
   methods: {
     // 동기화 처리
@@ -39,7 +49,6 @@ export default {
         const { data } = await loginUser(userData); // data를 바로 꺼냄.
         console.log(data);
         this.logMessage = `${data.user.username} 님 환영합니다.`; // ``을 이용해서 자바스크립트 변수를 넣을 수 있음.
-
       } catch (e) {
         // error 핸들링 코드
         console.log(e.response.data);

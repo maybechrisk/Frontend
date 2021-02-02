@@ -2,7 +2,7 @@
   <!-- prevent : 폼의 기본동작인 제출과 새로고침을 막을 수 있다.  -->
   <form class="" @submit.prevent="submitForm">
     <div class="">
-      <label for="username">id: </label>
+      <label for="username">email: </label>
       <input type="text" id="username" v-model="username" />
     </div>
     <div class="">
