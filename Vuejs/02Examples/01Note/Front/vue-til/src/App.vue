@@ -1,15 +1,18 @@
 <template lang="html">
   <div class="">
-    <header>
-      <router-link to="login">로그인</router-link> |
-      <router-link to="signup">회원가입</router-link>
-    </header>
+    <AppHeader></AppHeader>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {};
+import AppHeader from '@/components/common/AppHeader';
+
+export default {
+  components: {
+    AppHeader,
+  },
+};
 </script>
 
 <style lang="css" scoped></style>

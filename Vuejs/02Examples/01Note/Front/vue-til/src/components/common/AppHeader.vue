@@ -1,13 +1,13 @@
 <template>
   <div class="">
-    header
+    <header>
+      <router-link to="login">로그인</router-link> |
+      <router-link to="signup">회원가입</router-link>
+    </header>
   </div>
 </template>
 
 <script>
-// import Demo from '../../demo/basic/Demo' // 너무 번거로움
-import Demo from '@/demo/basic/Demo'; //로 간단하게 @로 하는 방법
-
 export default {};
 </script>
 
