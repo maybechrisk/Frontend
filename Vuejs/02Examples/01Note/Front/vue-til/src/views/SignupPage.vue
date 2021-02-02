@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="">
+    회원가입 페이지
     <SignupForm></SignupForm>
   </div>
 </template>

@@ -13,7 +13,8 @@
       <label for="nickname">nickname: </label>
       <input type="text" id="nickname" v-model="nickname" />
     </div>
-    <button type="submit">로그인</button>
+    <button type="submit">회원가입</button>
+    {{ logMessage }}
   </form>
 </template>
 
@@ -22,20 +23,33 @@ import { registerUser } from '@/api/index';
 export default {
   data() {
     return {
+      // form value;
       username: '',
       password: '',
       nickname: '',
+      // log Message
+      logMessage: '',
     };
   },
   methods: {
-    submitForm() {
+    // 동기화 처리
+    async submitForm() {
       console.log('폼 제출');
       const userData = {
         username: this.username,
         password: this.password,
         nickname: this.nickname,
-      }
-      registerUser(userData);
+      };
+//      const response = await registerUser(userData);
+        const { data } = await registerUser(userData); // data를 바로 꺼냄.
+        console.log(data.username);
+        this.logMessage = `${data.username} 님이 회원가입 되었습니다.` // ``을 이용해서 자바스크립트 변수를 넣을 수 있음.
+      this.initForm();
+    },
+    initForm(){ // 초기화 시 null로 해도 되지만, 타입을 정해주는 게 에러를 줄이는 방법임.
+      this.username = '';
+      this.password = '';
+      this.nickname = '';
     },
   },
 };
