@@ -14,8 +14,11 @@ export default new Vuex.Store({
   },
   mutations: {
     // state를 바꿈
-    setHeaderName(state, username) {
+    setUsername(state, username) {
       state.username = username;
+    },
+    clearUsername(state) {
+      state.username = '';
     },
   },
 });
