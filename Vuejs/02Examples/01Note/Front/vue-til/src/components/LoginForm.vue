@@ -46,8 +46,8 @@ export default {
           password: this.password,
         };
         const { data } = await loginUser(userData); // data를 바로 꺼냄.
-        console.info(data.user.username);
-        this.$store.commit('setUsername', data.user.username);
+        this.$store.commit('setToken', data.token); // 토큰 세팅
+        this.$store.commit('setUsername', data.user.username); // 이름 세팅
         this.$router.push('/main'); // same with <<router-link :to="">
         // this.logMessage = `${data.user.username} 님 환영합니다.`; // ``을 이용해서 자바스크립트 변수를 넣을 수 있음.
       } catch (e) {
