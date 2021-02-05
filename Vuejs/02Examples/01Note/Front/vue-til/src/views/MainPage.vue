@@ -3,9 +3,11 @@
     <div class="main">
       <div class="page-header">Today I posted</div>
       <ul>
-        <li v-for="postItem in postItems" :key="postItem._id">
-          {{ postItem.title }}
-        </li>
+        <PostListItem
+          v-for="postItem in postItems"
+          :key="postItem._id"
+          :postItem="postItem"
+        ></PostListItem>
       </ul>
     </div>
   </div>
@@ -13,8 +15,13 @@
 
 <script>
 import { fetchPosts } from '@/api/index';
+import PostListItem from '@/components/posts/PostListItem';
+
 export default {
   // 생성될 때 셋팅
+  components: {
+    PostListItem,
+  },
   created() {
     this.fetchData();
   },
