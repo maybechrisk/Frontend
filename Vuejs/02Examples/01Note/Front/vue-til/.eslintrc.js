@@ -19,8 +19,8 @@ module.exports = {
       {
         singleQuote: true, // ''
         semi: true,
-        useTabs: false,
-        tabWidth: 2,
+        useTabs: true,
+        tabWidth: 1,
         trailingComma: 'all',
         printWidth: 80,
         bracketSpacing: true,

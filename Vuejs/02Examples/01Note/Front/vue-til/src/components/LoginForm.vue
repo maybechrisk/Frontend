@@ -39,7 +39,6 @@ export default {
   methods: {
     // 동기화 처리
     async submitForm() {
-      console.log('로그인');
       try {
         // 비즈니스 로직
         const userData = {
@@ -47,11 +46,12 @@ export default {
           password: this.password,
         };
         const { data } = await loginUser(userData); // data를 바로 꺼냄.
-        console.log(data);
-        this.logMessage = `${data.user.username} 님 환영합니다.`; // ``을 이용해서 자바스크립트 변수를 넣을 수 있음.
+        console.info(data.user.username);
+        this.$store.commit('setHeaderName', data.user.username);
+        this.$router.push('/main'); // same with <<router-link :to="">
+        // this.logMessage = `${data.user.username} 님 환영합니다.`; // ``을 이용해서 자바스크립트 변수를 넣을 수 있음.
       } catch (e) {
         // error 핸들링 코드
-        console.log(e.response.data);
         this.logMessage = e.response.data;
       } finally {
         this.initForm();
