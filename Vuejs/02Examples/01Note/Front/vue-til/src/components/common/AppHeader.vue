@@ -1,7 +1,9 @@
 <template>
   <header>
     <div class="">
-      <router-link to="/" class-="logo">LOGO</router-link>
+      <router-link to="/" class-="logo">
+        <img src="@/assets/logo.png" width="30px" alt="로고" />
+      </router-link>
     </div>
     <div class="navigation">
       <!-- <template v-if="$store.getters.isLogin"> -->
