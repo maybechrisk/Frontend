@@ -4,7 +4,7 @@
       <h4>{{ postItem.title }}</h4>
     </div>
     <div class="post-contents">- {{ postItem.contents }}</div>
-    <div class="post-time">({{ postItem.createdAt }})</div>
+    <div class="post-time">({{ postItem.createdAt | formatDate }})</div>
     <button class="post-modify" @click="routeEditPage">수정</button>
     <button class="post-delete" @click="deleteItem">삭제</button>
   </li>
