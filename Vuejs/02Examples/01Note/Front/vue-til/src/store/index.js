@@ -1,6 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { getAuthFromCookie, getUserFromCookie } from '@/utils/cookie';
+import {
+  getAuthFromCookie,
+  getUserFromCookie,
+  saveAuthToCookie,
+  saveUserToCookie,
+} from '@/utils/cookie';
+import { loginUser } from '@/api/index';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -23,6 +30,22 @@ export default new Vuex.Store({
     },
     setToken(state, token) {
       state.token = token;
+    },
+  },
+  actions: {
+    async LOGIN({ commit }, userData) {
+      const { data } = await loginUser(userData); // data를 바로 꺼냄.
+
+      // store에 토큰과 유저정보 저장
+      commit('setToken', data.token); // 토큰 세팅
+      commit('setUsername', data.user.username); // 이름 세팅
+
+      // 쿠키에 토큰과 유저정보 저장
+      saveAuthToCookie(data.token);
+      saveUserToCookie(data.user.username);
+
+      // 기본적으로 promise가 반환이 되지만, 명시적으로 data를 반환한다.
+      return data;
     },
   },
 });
