@@ -15,7 +15,11 @@
       <input type="password" id="password" v-model="password" />
     </div>
     <!-- v-bind:를 줄이면 :로 쓴다 -->
-    <button :disabled="!isUsernameValid || !password" type="submit">
+    <button
+      :disabled="!isUsernameValid || !password"
+      type="submit"
+      :class="!isUsernameValid || !password ? 'disabled' : null"
+    >
       로그인
     </button>
     {{ logMessage }}
