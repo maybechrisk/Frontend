@@ -5,6 +5,11 @@
       <label for="username">email: </label>
       <input type="text" id="username" v-model="username" />
     </div>
+    <p>
+      <span class="warning" v-if="isUsernameValid && username">
+        이메일 주소를 넣어주세요.
+      </span>
+    </p>
     <div class="">
       <label for="password">pw: </label>
       <input type="password" id="password" v-model="password" />
