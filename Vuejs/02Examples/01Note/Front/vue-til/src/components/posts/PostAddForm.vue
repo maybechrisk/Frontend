@@ -7,6 +7,7 @@
     <div class="">
       <label for="contents">contents: </label>
       <textarea rows="5" id="contents" v-model="contents" />
+      <p v-if="!isContentsValid">Contents must be less than 200</p>
     </div>
     {{ logMessage }}
     <!-- v-bind:를 줄이면 :로 쓴다 -->
@@ -28,6 +29,12 @@ export default {
       logMessage: '',
     };
   },
+  computed: {
+    // 유효성 검사
+    isContentsValid() {
+      return this.contents.length <= 200;
+    },
+  },
   methods: {
     // 새 글 생성
     async submitForm() {
@@ -40,7 +47,6 @@ export default {
       } catch (e) {
         console.log(e.response.data.message);
         this.logMessage = e.response.data.message;
-      } finally {
       }
     },
   },
