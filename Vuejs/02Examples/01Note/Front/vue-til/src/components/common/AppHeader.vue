@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { deleteCookie } from '@/utils/cookie';
 export default {
   computed: {
     isUserLogin() {
@@ -31,7 +32,14 @@ export default {
   },
   methods: {
     logoutUser() {
+      // store의 내용 삭제
       this.$store.commit('clearUsername');
+      this.$store.commit('clearToken');
+      // 브라우저 저장소의 내용 삭제
+      deleteCookie('my_auth');
+      deleteCookie('my_user');
+      // 로긴으로 이동
+
       this.$router.push('/login');
     },
   },
