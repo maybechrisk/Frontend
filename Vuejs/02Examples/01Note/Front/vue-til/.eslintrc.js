@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   env: {
     node: true,
+    jest: true, // jest 문법 활성화
   },
   extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier'],
   parserOptions: {
