@@ -25,13 +25,13 @@ describe('LoginForm.vue', () => {
     const wrapper = shallowMount(LoginForm, {
       data() {
         return {
-          username: 'a@a.com',
+          username: 'a',
           password: '1111',
         };
       },
     });
     const button = wrapper.find('button');
-    expect(button.element.disabled).not.toBeTruthy();
+    expect(button.element.disabled).toBeTruthy();
     //expect(button.element.disabled).toBeTruthy();
   });
 });
