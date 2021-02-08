@@ -2,7 +2,9 @@
   <div class="">
     <div class="main">
       <div class="page-header">Today I posted</div>
-      <router-link to="/add" class="create_button">추가</router-link>
+      <router-link to="/add" class="create_button"
+        ><button>추가</button></router-link
+      >
       <div class="loading" v-if="isLoading">
         Loading....
       </div>
@@ -12,6 +14,7 @@
             v-for="postItem in postItems"
             :key="postItem._id"
             :postItem="postItem"
+            @refresh="fetchData"
           ></PostListItem>
         </ul>
       </div>
