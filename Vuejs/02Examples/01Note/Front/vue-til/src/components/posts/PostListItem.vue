@@ -5,7 +5,7 @@
     </div>
     <div class="post-contents">- {{ postItem.contents }}</div>
     <div class="post-time">({{ postItem.createdAt }})</div>
-    <button class="post-modify">수정</button>
+    <button class="post-modify" @click="routeEditPage">수정</button>
     <button class="post-delete" @click="deleteItem">삭제</button>
   </li>
 </template>
@@ -19,11 +19,16 @@ export default {
     },
   },
   methods: {
+    // 글 삭제
     async deleteItem() {
       if (confirm('삭제하시겠습니다?')) {
         await deletePost(this.postItem._id);
         this.$emit('refresh');
       }
+    },
+    // 수정 페이질 이동
+    async routeEditPage() {
+      this.$router.push(`/post/${this.postItem._id}`);
     },
   },
 };

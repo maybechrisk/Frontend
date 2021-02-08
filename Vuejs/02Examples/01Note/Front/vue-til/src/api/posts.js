@@ -6,6 +6,11 @@ function fetchPosts() {
   return posts.get('/');
 }
 
+// 특정 글 조회 api
+function fetchPost(postId) {
+  return posts.get(postId);
+}
+
 // 새 글 생성 API
 function createPost(postData) {
   return posts.post('/', postData);
@@ -16,4 +21,9 @@ function deletePost(postId) {
   return posts.delete(postId);
 }
 
-export { fetchPosts, createPost, deletePost };
+// 글 수정 api
+function editPost(postId, postData) {
+  return posts.put(postId, postData);
+}
+
+export { fetchPosts, createPost, deletePost, fetchPost, editPost };
