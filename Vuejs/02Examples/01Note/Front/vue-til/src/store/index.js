@@ -6,7 +6,7 @@ import {
   saveAuthToCookie,
   saveUserToCookie,
 } from '@/utils/cookie';
-import { loginUser } from '@/api/index';
+import { loginUser } from '@/api/auth';
 
 Vue.use(Vuex);
 
@@ -33,6 +33,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    // 로그인
     async LOGIN({ commit }, userData) {
       const { data } = await loginUser(userData); // data를 바로 꺼냄.
 

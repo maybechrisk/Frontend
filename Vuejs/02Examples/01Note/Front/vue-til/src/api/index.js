@@ -1,37 +1,22 @@
 import axios from 'axios';
 import { setInterceptors } from './common/interceptors';
 
+// 인증이 필요없는 인스턴스
 function createInstance() {
-  const instance = axios.create({
+  return axios.create({
     baseURL: process.env.VUE_APP_API_URL,
+  });
+}
+
+// 인증이 필요한 인스턴스
+function createInstanceWithAuth(url) {
+  const instance = axios.create({
+    baseURL: `${process.env.VUE_APP_API_URL}${url}`,
   });
   // 인터셉터에 instance 셋팅
   return setInterceptors(instance);
 }
 
 // 인스턴스 생성
-const instance = createInstance();
-
-// 회원가입 API
-function registerUser(userData) {
-  // const url = 'http://localhost:3000/signup';
-  // return axios.post(url, userData)
-  return instance.post('signup', userData);
-}
-
-// 로그인 API
-function loginUser(userData) {
-  return instance.post('login', userData);
-}
-
-// 노트 조회 API
-function fetchPosts() {
-  return instance.get('posts');
-}
-
-// 노트 새 글 생성 API
-function createPost(postData) {
-  return instance.post('posts', postData);
-}
-
-export { registerUser, loginUser, fetchPosts, createPost };
+export const instance = createInstance();
+export const posts = createInstanceWithAuth('posts'); // 기본 URL이 항상 posts

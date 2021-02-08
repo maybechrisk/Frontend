@@ -19,7 +19,6 @@
 
 <script>
 import { validateEmail } from '@/utils/validation';
-import { saveAuthToCookie, saveUserToCookie } from '@/utils/cookie';
 export default {
   data() {
     return {
@@ -45,6 +44,8 @@ export default {
           username: this.username,
           password: this.password,
         };
+
+        await this.$store.dispatch('LOGIN', userData);
         // 메인으로 이동
         this.$router.push('/main'); // same with <<router-link :to="">
         // this.logMessage = `${data.user.username} 님 환영합니다.`; // ``을 이용해서 자바스크립트 변수를 넣을 수 있음.
