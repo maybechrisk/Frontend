@@ -2,6 +2,7 @@
   <div class="">
     <div class="main">
       <div class="page-header">Today I posted</div>
+      <router-link to="/add" class="create_button">추가</router-link>
       <div class="loading" v-if="isLoading">
         Loading....
       </div>

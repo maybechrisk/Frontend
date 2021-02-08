@@ -29,4 +29,9 @@ function fetchPosts() {
   return instance.get('posts');
 }
 
-export { registerUser, loginUser, fetchPosts };
+// 노트 새 글 생성 API
+function createPost(postData) {
+  return instance.post('posts', postData);
+}
+
+export { registerUser, loginUser, fetchPosts, createPost };
