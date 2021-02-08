@@ -43,6 +43,7 @@ const router = new VueRouter({
   ],
 }); // default 파일에서 하나의 변수가 변하게 됨
 
+// router navigation guard
 router.beforeEach((to, from, next) => {
   if (to.meta.auth && !store.getters.isLogin) {
     console.log('인증이 필요합니다.');

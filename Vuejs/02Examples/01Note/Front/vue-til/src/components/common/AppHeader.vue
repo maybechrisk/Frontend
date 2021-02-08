@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="">
-      <router-link to="/" class-="logo">
+      <router-link :to="logoLink" class-="logo">
         <img src="@/assets/logo.png" width="30px" alt="로고" />
       </router-link>
     </div>
@@ -24,6 +24,9 @@ export default {
   computed: {
     isUserLogin() {
       return this.$store.getters.isLogin;
+    },
+    logoLink() {
+      return this.$store.getters.isLogin ? '/main' : '/login';
     },
   },
   methods: {
