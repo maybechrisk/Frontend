@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>예제3-1. 컴포넌트</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <word-relay start-word="한국"></word-relay>
+    <word-relay start-word="영상"></word-relay>
+    <word-relay start-word="눈물"></word-relay>
+  </div>
+</body>
+<script>
+  // 중복되는 것을 막기 위해 컴포넌트를 만든다.
+  // 뷰 컴포넌트
+  // 뷰 인스턴스 보다 위에 만든다.
+  Vue.component('word-relay', {  // 전역 컴포넌트
+    template:
+// template은 꼭 하나의 태그로 묶어주어야한다. 이때는 div로, cdn으로 할 때는 template으로
+      `<div>
+          <form v-on:submit="onClickButton">
+            제시어 : {{ word }}
+            <br/>
+            끝말잇기 : <input type="text" v-model='value'><button>제출</button>
+            <br/>
+            {{result}}
+            <br/>
+            <br/>
+          </form>
+        </div>
+      `,
+    props: {
+      startWord : String,
+    },
+    data() {  // 컴포넌트이기 떄문에 data를 return 해 준다.
+      return {
+        word : this.startWord, // 제시어
+        value : '', // 입력값
+        result : '', // 판단
+      }
+    },
+    methods: {
+      onClickButton(e) {
+        e.preventDefault();
+        if(this.word[this.word.length-1] === this.value[0]){
+          this.result = '정답';
+          this.word = this.value;
+          this.value = '';
+        }else{
+          this.result = '오답';
+          this.value = '';
+        }
+      }
+    }
+  })
+
+  // 기본 뷰 인스턴스 // 뷰는 나중에 써야 함.
+  const app = new Vue({
+    el: '#root',
+  })
+</script>
+</html>
