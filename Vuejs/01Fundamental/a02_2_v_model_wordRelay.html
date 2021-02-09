@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>예제3-1. 끝말잇기</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <form v-on:submit="onClickButton">
+      제시어 : {{ word }}
+      <br/>
+      끝말잇기 : <input type="text" v-model='value'><button>제출</button>
+      <br/>
+      {{result}}
+    </form>
+  </div>
+</body>
+<script>
+  const app = new Vue({
+    el: '#root',
+    data: {  // 데이터 중심으로 코딩
+      word : '한국', // 제시어
+      value : '', // 입력값
+      result : '', // 판단
+    },
+    methods: {
+      onClickButton(e) {
+        e.preventDefault();
+        if(this.word[this.word.length-1] === this.value[0]){
+          this.result = '정답';
+          this.word = this.value;
+          this.value = '';
+        }else{
+          this.result = '오답';
+          this.value = '';
+        }
+      }
+    }
+  })
+</script>
+</html>

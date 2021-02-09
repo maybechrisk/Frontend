@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>예제2-1. 덧셈</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <form v-on:submit="onClickButton">
+      {{x}} + {{y}} =
+      <input type="number" v-model.number="answer" ref="result"/>
+      <button>계산</button>
+      <div>
+        <p v-if="answer==''">값을 입력하세요</p>
+        <p v-else-if="!check">오답</p>
+        <p v-else>정답</p>
+      </div>
+    </form>
+  </div>
+</body>
+<script>
+  const app = new Vue({
+    el: '#root',
+    data: {  // 데이터 중심으로 코딩
+      x: Math.ceil(Math.random()*9),
+      y: Math.ceil(Math.random()*9),
+      answer: '',
+      check: false
+    },
+    methods: {
+      onClickButton(e) {
+        e.preventDefault();
+        if(this.x + this.y === this.answer){
+          this.check=true;
+          this.$refs.result.focus(); // $refs는 남용하면 절대 안된다. (화면과 데이터가 불일치 할 수 있음.)
+        }else{
+          this.check=false;
+          this.answer= '';
+          this.$refs.result.focus();
+        }
+      }
+    }
+  })
+</script>
+</html>
